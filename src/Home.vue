@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <div class="banner-1" style="max-width: 100%; height: 400px;"></div>
-    <div class="main-content" style="min-height: 100vh">
+    <div class="banner" alt="Cachorro deitado na grama"></div>
+    <div class="main-content is-flex is-flex-direction-column is-justify-content-flex-start is-align-items-center ">
       <div class="is-flex is-flex-direction-column mt-5">
         <h1 class="title is-3">Pets</h1>
         <div class="races is-flex is-justify-content-center">
@@ -11,8 +11,8 @@
           <div class="button is-info is-rounded is-small ml-2 mb-2 is-outlined">Raça 4</div>
         </div>
       </div>
-      <div class="pets">
-        <router-link to="/pet/id" class="pet m-2">
+      <div class="is-flex is-justify-content-center is-align-items-center is-flex-wrap-wrap">
+        <router-link to="/pet/id" class="pet is-flex is-justify-content-center is-align-items-center is-flex-direction-column m-2">
           Pet 1
           <small>3 anos - Raça 1</small>
         </router-link>
@@ -62,7 +62,7 @@
         </router-link>
       </div>
     </div>
-    <div class="banner-2" style="max-width: 100%; height: 400px;"></div>
+    <div class="banner" alt="Cachorro brincando com bolinha na grama"></div>
   </div>
 </template>
 
@@ -74,49 +74,20 @@ export default {
 </script>
 
 <style lang="scss">
-.banner-1 {
-  background: red;
-  max-width: 1024px!important;
-  background: url('./banner1.jpg');
+.banner {
+  max-width: 1024px !important;
   background-color: #ddd;
   background-size: cover;
-  background-position: center center;
   margin: 0 auto;
-}
-.banner-2 {
-  background: red;
-  max-width: 1024px!important;
-  background: url('./banner2.jpg');
-  background-color: #ddd;
-  background-size: cover;
-  background-position: center center;
-  margin: 0 auto;
-}
-.main-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  max-width: 1024px;
-  margin: 0 auto;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-}
-.pets {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  background-position: center center !important;
+  max-width: 100%;
+  height: 400px;
+  &:first-of-type {
+    background: url('./banner1.jpg');
+  }
+  &:last-of-type {
+    background: url('./banner2.jpg');
+  }
 }
 
-.pet {
-  width: 200px;
-  height: 200px;
-  border: 1px solid #ddd;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 </style>

@@ -2,27 +2,13 @@
   <div>
     <nav class="level m-0">
       <router-link to="/" class="level-item has-text-centered">
-        <img src="https://nofaro-tests.s3.amazonaws.com/logo.png" alt="" style="height: 100px;">
+        <img src="https://nofaro-tests.s3.amazonaws.com/logo.png" alt="Logo da Buddy Pets" class="full-height">
       </router-link>
     </nav>
     <hr class="mt-0">
     <router-view/>
-    {{ none }}
   </div>
 </template>
-
-<script>
-import _ from 'lodash';
-
-export default {
-  data() {
-    return {
-      none: _.filter([]).length > 0 ? '' : '',
-    }
-  }  
-}
-</script>
-
 
 <style lang="scss">
 @import "./../node_modules/bulma/bulma.sass";
@@ -34,19 +20,25 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: hsl(210, 29%, 24%);
 }
 
-#nav {
-  padding: 30px;
+.main-content {
+  max-width: 1024px;
+  margin: 0 auto;
+  border-left: 1px solid hsl(0, 0%, 87%);
+  border-right: 1px solid #ddd;
+  min-height: 100vh;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.pet {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.full-height {
+  height: 100px;
 }
 </style>
