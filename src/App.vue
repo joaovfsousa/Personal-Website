@@ -10,6 +10,14 @@
   </div>
 </template>
 
+<script>
+export default {
+  async created() {
+    this.$store.dispatch('initialize')
+  }
+}
+</script>
+
 <style lang="scss">
 @import "./../node_modules/bulma/bulma.sass";
 </style>
