@@ -5,10 +5,7 @@
       <div class="is-flex is-flex-direction-column mt-5">
         <h1 class="title is-3">Pets</h1>
         <div class="races is-flex is-justify-content-center">
-          <div class="button is-info is-rounded is-small ml-2 mb-2 is-outlined">Raça 1</div>
-          <div class="button is-info is-rounded is-small ml-2 mb-2 is-outlined">Raça 2</div>
-          <div class="button is-info is-rounded is-small ml-2 mb-2">Raça 3</div>
-          <div class="button is-info is-rounded is-small ml-2 mb-2 is-outlined">Raça 4</div>
+          <div v-for="breed, index in breeds" :key="`breed-${index}`" class="button is-info is-rounded is-small ml-2 mb-2" :class="getBreedSelectedClass(breed)" @click="handleSelectedBreed(breed)">{{breed}}</div>
         </div>
       </div>
       <div class="is-flex is-justify-content-center is-align-items-center is-flex-wrap-wrap">
@@ -26,9 +23,26 @@
 import moment from 'moment'
 export default {
   name: 'Home',
+  data() {
+    return {
+      selectedBreed: null
+    }
+  },
   computed: {
     pets() {
+      if(this.selectedBreed) {
+        return this.$store.getters.getPets.filter((pet) => pet.breed === this.selectedBreed)
+      }
       return this.$store.getters.getPets
+    },
+    breeds() {
+      const breeds = []
+      this.$store.getters.getPets.forEach(pet => {
+        if (!breeds.includes(pet.breed)) {
+          breeds.push(pet.breed)
+        }
+      })
+      return breeds
     }
   },
   methods: {
@@ -40,6 +54,12 @@ export default {
       } else {
         return ageInMonths > 1 ? `${ageInMonths} meses` : `${ageInMonths} mês`
       }
+    },
+    handleSelectedBreed(breed) {
+      this.selectedBreed = this.selectedBreed === breed ? null : breed
+    },
+    getBreedSelectedClass(breed) {
+      return breed !== this.selectedBreed ? 'is-outlined' : null
     }
   }
 }
