@@ -12,53 +12,9 @@
         </div>
       </div>
       <div class="is-flex is-justify-content-center is-align-items-center is-flex-wrap-wrap">
-        <router-link to="/pet/id" class="pet is-flex is-justify-content-center is-align-items-center is-flex-direction-column m-2">
-          Pet 1
-          <small>3 anos - Raça 1</small>
-        </router-link>
-        <router-link to="/pet/id" class="pet m-2">
-          Pet 2
-          <small>1 mês - Raça 3</small>
-        </router-link>
-        <router-link to="/pet/id" class="pet m-2">
-          Pet 3
-          <small>4 anos - Raça 2</small>
-        </router-link>
-        <router-link to="/pet/id" class="pet m-2">
-          Pet 4
-          <small>5 anos - Raça 3</small>
-        </router-link>
-        <router-link to="/pet/id" class="pet m-2">
-          Pet 5
-          <small>7 meses - Raça 2</small>
-        </router-link>
-        <router-link to="/pet/id" class="pet m-2">
-          Pet 6
-          <small>3 anos - Raça 1</small>
-        </router-link>
-        <router-link to="/pet/id" class="pet m-2">
-          Pet 7
-          <small>4 anos - Raça 2</small>
-        </router-link>
-        <router-link to="/pet/id" class="pet m-2">
-          Pet 8
-          <small>10 anos - Raça 1</small>
-        </router-link>
-        <router-link to="/pet/id" class="pet m-2">
-          Pet 9
-          <small>2 anos - Raça 3</small>
-        </router-link>
-        <router-link to="/pet/id" class="pet m-2">
-          Pet 10
-          <small>6 anos - Raça 1</small>
-        </router-link>
-        <router-link to="/pet/id" class="pet m-2">
-          Pet 11
-          <small>1 ano - Raça 3</small>
-        </router-link>
-        <router-link to="/pet/id" class="pet m-2">
-          Pet 12
-          <small>9 anos - Raça 2</small>
+        <router-link v-for="pet in pets" :key="`pet-${pet.id}`" :to="`/pet/${pet.id}`" class="pet is-flex is-justify-content-center is-align-items-center is-flex-direction-column m-2">
+          {{pet.name}}
+          <small>{{getPetAge(pet)}} - {{pet.breed}}</small>
         </router-link>
       </div>
     </div>
@@ -67,9 +23,25 @@
 </template>
 
 <script>
-
+import moment from 'moment'
 export default {
   name: 'Home',
+  computed: {
+    pets() {
+      return this.$store.getters.getPets
+    }
+  },
+  methods: {
+    getPetAge(pet) {
+      const ageInMonths = moment().diff(pet.birthday, 'months')
+      if(ageInMonths > 12) {
+        const ageString = `${Math.floor(ageInMonths / 12)} ano`
+        return ageInMonths >= 24 ? `${ageString}s` : ageString
+      } else {
+        return ageInMonths > 1 ? `${ageInMonths} meses` : `${ageInMonths} mês`
+      }
+    }
+  }
 }
 </script>
 
