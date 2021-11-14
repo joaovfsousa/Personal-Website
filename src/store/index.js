@@ -10,7 +10,12 @@ export default new Vuex.Store({
       return state.pets;
     },
     getPetById: (state) => (id) => {
-      return state.pets.find(pet => pet.id === id)
+      return state.pets.find(pet => pet.id == id)
+    },
+    getPetBuddiesById: (state) => (id) => {
+      const findById = (petId) => state.pets.find(pet => pet.id == petId)
+      const pet = findById(id)
+      return pet.buddies.map((buddyId) => findById(buddyId))
     }
   },
   actions: {

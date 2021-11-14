@@ -5,11 +5,23 @@
       <div class="is-flex is-flex-direction-column mt-5">
         <h1 class="title is-3">Pets</h1>
         <div class="races is-flex is-justify-content-center">
-          <div v-for="breed, index in breeds" :key="`breed-${index}`" class="button is-info is-rounded is-small ml-2 mb-2" :class="getBreedSelectedClass(breed)" @click="handleSelectedBreed(breed)">{{breed}}</div>
+          <div
+            v-for="breed, index in breeds"
+            :key="`breed-${index}`"
+            class="button is-info is-rounded is-small ml-2 mb-2"
+            :class="getBreedSelectedClass(breed)"
+            @click="handleSelectedBreed(breed)"
+          >
+            {{breed}}
+          </div>
         </div>
       </div>
       <div class="is-flex is-justify-content-center is-align-items-center is-flex-wrap-wrap">
-        <router-link v-for="pet in pets" :key="`pet-${pet.id}`" :to="`/pet/${pet.id}`" class="pet is-flex is-justify-content-center is-align-items-center is-flex-direction-column m-2">
+        <router-link
+          v-for="pet in pets" :key="`pet-${pet.id}`"
+          :to="`/pet/${pet.id}`"
+          class="pet is-flex is-justify-content-center is-align-items-center is-flex-direction-column m-2"
+        >
           {{pet.name}}
           <small>{{getPetAge(pet)}} - {{pet.breed}}</small>
         </router-link>
@@ -75,10 +87,10 @@ export default {
   max-width: 100%;
   height: 400px;
   &:first-of-type {
-    background: url('./banner1.jpg');
+    background: url('./assets/banner1.jpg');
   }
   &:last-of-type {
-    background: url('./banner2.jpg');
+    background: url('./assets/banner2.jpg');
   }
 }
 
