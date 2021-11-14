@@ -21,3 +21,4 @@ botão), 100 em best practices e 100 em SEO. *Valores obtidos pela extensão rod
 * Criação de diretório para serviços(integrações com diferentes APIs)
 * Criação de diretório para assets
 * Adição de css global
+* Separação do componente de apresentação do pet e pros banners

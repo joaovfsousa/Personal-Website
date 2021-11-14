@@ -2,7 +2,7 @@
   <div>
     <nav class="level m-0">
       <router-link to="/" class="level-item has-text-centered">
-        <img src="./assets/buddy-pets-logo.png" alt="Logo da Buddy Pets" class="full-height">
+        <img src="/assets/buddy-pets-logo.png" alt="Logo da Buddy Pets" class="full-height">
       </router-link>
     </nav>
     <hr class="mt-0">

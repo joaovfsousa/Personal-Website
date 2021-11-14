@@ -5,14 +5,10 @@
     </div>
     
     <div v-if="pet" class="is-flex">
-      <div class="pet pet is-flex is-justify-content-center is-align-items-center is-flex-direction-column m-2">
-        {{pet.name}}
-        <small>{{getPetAge(pet)}} - {{pet.breed}}</small>
-      </div>
+      <Pet :pet="pet"/>
       <div class="has-text-left">
         <h3 class="title is-3 pt-3">{{pet.name}}</h3>
-        <div>{{getPetAge(pet)}} - {{pet.breed}}</div>
-          
+        <div>{{getPetAge(pet)}} - {{pet.breed}}</div>   
       </div>
     </div>
 
@@ -22,16 +18,15 @@
     </div>
 
     <div class="is-flex is-justify-content-start">
-      <router-link v-for="(buddy, index) in buddies" :key="`buddy-${index}`" :to="`/pet/${buddy.id}`" class="pet pet is-flex is-justify-content-center is-align-items-center is-flex-direction-column m-2">
-        {{buddy.name}}
-        <small>{{getPetAge(buddy)}} - {{buddy.breed}}</small>
-      </router-link>
+      <Pet v-for="(buddy, index) in buddies" :key="`buddy-${index}`" :pet="buddy" isLink/>
     </div>
   </div>
 </template>
 <script>
 import moment from 'moment'
+import Pet from '../components/Pet'
 export default {
+  components: { Pet },
   computed: {
     pet() {
       const id = this.$route.params.id
