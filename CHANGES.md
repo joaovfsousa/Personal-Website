@@ -15,3 +15,9 @@ botão), 100 em best practices e 100 em SEO. *Valores obtidos pela extensão rod
 * Limpeza no css e utilização de classes do bulma.
 
 ## Organização
+
+* Separação das páginas em um diretório específico
+* Criação de diretório para components
+* Criação de diretório para serviços(integrações com diferentes APIs)
+* Criação de diretório para assets
+* Adição de css global

@@ -20,6 +20,7 @@ export default {
 
 <style lang="scss">
 @import "./../node_modules/bulma/bulma.sass";
+@import "./styles/main.scss";
 </style>
 
 <style lang="scss">
@@ -29,24 +30,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: hsl(210, 29%, 24%);
-}
-
-.main-content {
-  max-width: 1024px;
-  margin: 0 auto;
-  border-left: 1px solid hsl(0, 0%, 87%);
-  border-right: 1px solid #ddd;
-  min-height: 100vh;
-}
-
-.pet {
-  width: 200px;
-  height: 200px;
-  border: 1px solid #ddd;
-  cursor: pointer;
-}
-
-.full-height {
-  height: 100px;
 }
 </style>

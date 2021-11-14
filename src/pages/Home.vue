@@ -77,7 +77,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .banner {
   max-width: 1024px !important;
   background-color: #ddd;
@@ -87,10 +87,10 @@ export default {
   max-width: 100%;
   height: 400px;
   &:first-of-type {
-    background: url('./assets/banner1.jpg');
+    background: url('../assets/banner1.jpg');
   }
   &:last-of-type {
-    background: url('./assets/banner2.jpg');
+    background: url('../assets/banner2.jpg');
   }
 }
 
