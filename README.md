@@ -1,4 +1,4 @@
-# Buddy Pets
+# Personal site
 
 ## Project setup
 ```

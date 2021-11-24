@@ -1,82 +1,115 @@
 <template>
   <div class="home">
-    <Banner src="/assets/banner1.jpg" alt="Cachorro deitado na grama" />
-    <div class="main-content is-flex is-flex-direction-column is-justify-content-flex-start is-align-items-center ">
+    <div class="main-content is-flex is-flex-direction-column is-justify-content-flex-start is-align-items-center">
       <div class="is-flex is-flex-direction-column mt-5">
-        <h1 class="title is-3">Pets</h1>
-        <div class="races is-flex is-justify-content-center">
-          <div
-            v-for="breed, index in breeds"
-            :key="`breed-${index}`"
-            class="button is-info is-rounded is-small ml-2 mb-2"
-            :class="getBreedSelectedClass(breed)"
-            @click="handleSelectedBreed(breed)"
-          >
-            {{breed}}
-          </div>
-        </div>
-      </div>
-      <div class="is-flex is-justify-content-center is-align-items-center is-flex-wrap-wrap">
-        <Pet
-          v-for="pet in pets" :key="`pet-${pet.id}`"
-          :pet="pet"
-          isLink
-        />
+        <figure class="image profile-photo">
+          <img src="/assets/profile-photo.jpeg" height="192" width="192" alt="Foto de perfil" class="is-rounded"/>
+        </figure>
+        <h1 class="title is-3 has-text-white mt-4">João Vitor Sousa</h1>
+        <h1 class="title is-5 has-text-white mt-0">Software Engineer</h1>
+
+        <main class="mt-2">
+          <a role="button" rel="noopener" target="_blank" href="https://linkedin.joaovfsousa.dev" class="is-flex is-align-items-center is-justify-context-flex-start card">
+            <mdicon name="linkedin" class="icon" />
+            <div class="is-flex is-flex-direction-column is-align-items-flex-start">
+              <span class="title is-6">Linkedin</span>
+              <span class="title is-7">linkedin.com/in/joaovfsousa</span>
+            </div>            
+          </a>
+          <a role="button" rel="noopener"  target="_blank" href="https://wpp.joaovfsousa.dev" class="is-flex is-align-items-center is-justify-context-flex-start card">
+            <mdicon name="whatsapp" class="icon" />
+            <div class="is-flex is-flex-direction-column is-align-items-flex-start">
+              <span class="title is-6">Whatsapp</span>
+              <span class="title is-7">wpp.joaovfsousa.dev</span>
+            </div>
+          </a>
+          <a role="button" rel="noopener" target="_blank" href="https://cv.joaovfsousa.dev" class="is-flex is-align-items-center is-justify-context-flex-start card">
+            <mdicon name="card-account-details-outline" class="icon" />
+            <div class="is-flex is-flex-direction-column is-align-items-flex-start">
+              <span class="title is-6">Currículo</span>
+              <span class="title is-7">cv.joaovfsousa.dev</span>
+            </div>
+          </a>
+          <a v-if="!isEmailCopied" role="button" rel="noopener" class="is-flex is-align-items-center is-justify-context-flex-start card" @click="copyEmail">
+            <mdicon name="gmail" class="icon" />
+            <div class="is-flex is-flex-direction-column is-align-items-flex-start">
+              <span class="title is-6">E-mail</span>
+              <span class="title is-7">joaovfsousa@gmail.com</span>
+            </div>
+          </a>
+          <a v-else role="button" rel="noopener" class="is-flex is-align-items-center is-justify-context-flex-start card" style="background-color: hsl(171, 100%, 41%);" @click="copyEmail">
+            <mdicon name="gmail" class="icon" style="color: white !important" />
+            <span class="title is-6" style="color: white !important">E-mail copiado!</span>
+          </a>
+          <a role="button" rel="noopener" target="_blank" href="https://github.joaovfsousa.dev" class="is-flex is-align-items-center is-justify-context-flex-start card">
+            <mdicon name="github" class="icon" />
+            <div class="is-flex is-flex-direction-column is-align-items-flex-start">
+              <span class="title is-6">Github</span>
+              <span class="title is-7">github.com/joaovfsousa</span>
+            </div>
+          </a>
+        </main>
       </div>
     </div>
-    <Banner src="/assets/banner2.jpg" alt="Cachorro brincando com bolinha na grama" />
   </div>
 </template>
 
 <script>
-import moment from 'moment'
-import Pet from '../components/Pet.vue'
-import Banner from '../components/Banner.vue'
 export default {
   name: 'Home',
-  components: { Pet, Banner },
   data() {
     return {
-      selectedBreed: null
-    }
-  },
-  computed: {
-    pets() {
-      if(this.selectedBreed) {
-        return this.$store.getters.getPets.filter((pet) => pet.breed === this.selectedBreed)
-      }
-      return this.$store.getters.getPets
-    },
-    breeds() {
-      const breeds = []
-      this.$store.getters.getPets.forEach(pet => {
-        if (!breeds.includes(pet.breed)) {
-          breeds.push(pet.breed)
-        }
-      })
-      return breeds
+      isEmailCopied: false
     }
   },
   methods: {
-    getPetAge(pet) {
-      const ageInMonths = moment().diff(pet.birthday, 'months')
-      if(ageInMonths > 12) {
-        const ageString = `${Math.floor(ageInMonths / 12)} ano`
-        return ageInMonths >= 24 ? `${ageString}s` : ageString
-      } else {
-        return ageInMonths > 1 ? `${ageInMonths} meses` : `${ageInMonths} mês`
-      }
-    },
-    handleSelectedBreed(breed) {
-      this.selectedBreed = this.selectedBreed === breed ? null : breed
-    },
-    getBreedSelectedClass(breed) {
-      return breed !== this.selectedBreed ? 'is-outlined' : null
+    async copyEmail(e) {
+      e.preventDefault();
+      await navigator.clipboard.writeText('joaovfsousa@gmail.com');
+      this.isEmailCopied = true;
+      setTimeout(() => {
+        this.isEmailCopied = false;
+      }, 1000);
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  .notification {
+    padding: 0.4rem 1.5rem;
+    max-width: 12rem;
+    align-self: center;
+    position: fixed;
+  }
+
+  .image {
+    height: 12rem;
+    width: 12rem;
+    &.profile-photo {
+      margin: 0 auto;
+    }
+  }
+
+  .title {
+    margin-bottom: 0.75rem;
+  }
+
+  .card {
+    height: 3rem;
+    margin-bottom: 1rem;
+    width: 20rem;
+
+    .icon {
+      height: 2rem;
+      width: 2rem;
+      margin: 0rem 0.5rem;
+      color: hsl(0, 0%, 20%);
+    }
+    .title {
+      margin-bottom: -2px;
+      color: hsl(0, 0%, 20%);
+    }
+  }
 
 </style>
