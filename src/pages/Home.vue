@@ -41,13 +41,6 @@
             <mdicon name="gmail" class="icon" style="color: white !important" />
             <span class="title is-6" style="color: white !important">E-mail copiado!</span>
           </a>
-          <a role="button" rel="noopener" target="_blank" href="https://github.joaovfsousa.dev" class="is-flex is-align-items-center is-justify-context-flex-start card">
-            <mdicon name="github" class="icon" />
-            <div class="is-flex is-flex-direction-column is-align-items-flex-start">
-              <span class="title is-6">Github</span>
-              <span class="title is-7">github.com/joaovfsousa</span>
-            </div>
-          </a>
         </main>
       </div>
     </div>
