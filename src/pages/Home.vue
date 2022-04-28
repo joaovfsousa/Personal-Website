@@ -3,40 +3,16 @@
     <div class="main-content is-flex is-flex-direction-column is-justify-content-flex-start is-align-items-center">
       <div class="is-flex is-flex-direction-column mt-5">
         <figure class="image profile-photo">
-          <img src="/assets/profile-photo.jpeg" height="192" width="192" alt="Foto de perfil" class="is-rounded"/>
+          <img src="https://avatars.githubusercontent.com/u/41269214?v=4" height="192" width="192" alt="Foto de perfil" class="is-rounded"/>
         </figure>
         <h1 class="title is-3 has-text-white mt-4">João Vitor Sousa</h1>
         <h1 class="title is-5 has-text-white mt-0">Software Engineer</h1>
-
+        
         <main class="mt-2">
-          <a role="button" rel="noopener" target="_blank" href="https://linkedin.joaovfsousa.dev" class="is-flex is-align-items-center is-justify-context-flex-start card">
-            <mdicon name="linkedin" class="icon" />
-            <div class="is-flex is-flex-direction-column is-align-items-flex-start">
-              <span class="title is-6">Linkedin</span>
-              <span class="title is-7">linkedin.com/in/joaovfsousa</span>
-            </div>            
-          </a>
-          <a role="button" rel="noopener" target="_blank" href="https://calendar.joaovfsousa.dev" class="is-flex is-align-items-center is-justify-context-flex-start card">
-            <mdicon name="text-to-speech" class="icon" />
-            <div class="is-flex is-flex-direction-column is-align-items-flex-start">
-              <span class="title is-6">Vamos conversar!</span>
-              <span class="title is-7">calendar.joaovfsousa.dev</span>
-            </div>
-          </a>
-          <a role="button" rel="noopener"  target="_blank" href="https://wpp.joaovfsousa.dev" class="is-flex is-align-items-center is-justify-context-flex-start card">
-            <mdicon name="whatsapp" class="icon" />
-            <div class="is-flex is-flex-direction-column is-align-items-flex-start">
-              <span class="title is-6">Whatsapp</span>
-              <span class="title is-7">wpp.joaovfsousa.dev</span>
-            </div>
-          </a>
-          <a role="button" rel="noopener" target="_blank" href="https://cv.joaovfsousa.dev" class="is-flex is-align-items-center is-justify-context-flex-start card">
-            <mdicon name="card-account-details-outline" class="icon" />
-            <div class="is-flex is-flex-direction-column is-align-items-flex-start">
-              <span class="title is-6">Currículo</span>
-              <span class="title is-7">cv.joaovfsousa.dev</span>
-            </div>
-          </a>
+          <Button title="Vamos conversar!" icon="text-to-speech" link="https://calendar.joaovfsousa.dev"/>
+          <Button title="Linkedin" icon="linkedin" link="https://linkedin.joaovfsousa.dev"/> 
+          <Button title="Whatsapp" icon="whatsapp" link="https://wpp.joaovfsousa.dev"/>
+          <Button title="Currículo" icon="card-account-details-outline" link="https://cv.joaovfsousa.dev"/>
           <a v-if="!isEmailCopied" role="button" rel="noopener" class="is-flex is-align-items-center is-justify-context-flex-start card" @click="copyEmail">
             <mdicon name="gmail" class="icon" />
             <div class="is-flex is-flex-direction-column is-align-items-flex-start">
@@ -55,8 +31,12 @@
 </template>
 
 <script>
+import Button from '../components/Button.vue'
 export default {
   name: 'Home',
+  components: {
+    Button
+  },
   data() {
     return {
       isEmailCopied: false
