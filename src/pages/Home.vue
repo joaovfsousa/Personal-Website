@@ -16,6 +16,13 @@
               <span class="title is-7">linkedin.com/in/joaovfsousa</span>
             </div>            
           </a>
+          <a role="button" rel="noopener" target="_blank" href="https://calendar.joaovfsousa.dev" class="is-flex is-align-items-center is-justify-context-flex-start card">
+            <mdicon name="text-to-speech" class="icon" />
+            <div class="is-flex is-flex-direction-column is-align-items-flex-start">
+              <span class="title is-6">Vamos conversar!</span>
+              <span class="title is-7">calendar.joaovfsousa.dev</span>
+            </div>
+          </a>
           <a role="button" rel="noopener"  target="_blank" href="https://wpp.joaovfsousa.dev" class="is-flex is-align-items-center is-justify-context-flex-start card">
             <mdicon name="whatsapp" class="icon" />
             <div class="is-flex is-flex-direction-column is-align-items-flex-start">
